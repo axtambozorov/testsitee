@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+    {% block sidebar %}
+    {% include 'inc/_sidebar.html' %}
+    {% endblock %}
+    {% block content %}
+            <div class="col-md-9">
+
+                <div class="card mt-2">
+                    <div class="card-header">
+                        Категория:<a href="{{ news.item.category.get_absolute_url }}">{{ news_item.category }}</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="media">
+                            {% if news_item.image %}
+                                <img src="{{ news_item.image.url }}" alt="" width="350" height="235" class="mr-3">
+                            {% else %}
+                                <img src="https://picsum.photos/id/1060/350/235/?blur=2" class="mr-3">
+                            {% endif %}
+                            <div class="media-body">
+                                <h5 class="card-title">{{ news_item.title }}</h5>
+                                <p class="card-text">{{ news_item.content }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer text-muted">{{ news_item.created_at| date:'d-m-y H:s' }}</div
+                </div>
+            </div>
+    {% endblock %}
